@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imants Ziedonis — Pants un pikselis</title>
+<style>
+:root{--ink:#172b25;--muted:#64756d;--cream:#f6f3e9;--paper:#fffdf7;--green:#315d49;--lime:#d5e6a7;--orange:#e58a55;--line:#dce2d5}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+header{position:sticky;top:0;z-index:10;background:rgba(246,243,233,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-weight:800;letter-spacing:.08em;font-size:.85rem;color:var(--green)}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700}
+nav a:hover{color:var(--orange)}
+.hero{max-width:1120px;margin:38px auto 70px;padding:24px 22px;display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center}
+.eyebrow{color:var(--green);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.76rem}
+h1{font-size:clamp(3rem,7vw,6.4rem);line-height:.98;letter-spacing:-.06em;margin:14px 0 20px}
+.hero p{font-size:1.1rem;color:#43574d;max-width:570px}
+.meta{display:inline-block;margin-top:8px;padding:8px 14px;border-radius:30px;background:var(--lime);font-weight:700;font-size:.88rem}
+.hero-img{position:relative}
+.hero-img img{width:100%;height:440px;object-fit:cover;border-radius:48% 48% 12px 12px;filter:grayscale(100%)}
+.photo-caption{font-size:.78rem;color:var(--muted);margin-top:8px}
+.hero-sticker{position:absolute;right:-12px;bottom:34px;background:var(--orange);color:white;padding:18px;border-radius:50%;font-weight:800;transform:rotate(8deg);width:112px;height:112px;display:grid;place-items:center;text-align:center;line-height:1.2}
+section{max-width:1120px;margin:0 auto 76px;padding:0 22px;scroll-margin-top:90px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}
+.kicker{color:var(--orange);font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+h2{font-size:clamp(2rem,4vw,3.3rem);line-height:1.05;letter-spacing:-.04em;margin:6px 0}
+.lead{max-width:620px;color:var(--muted);margin:0}
+.bio-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px}
+.panel p:first-child{margin-top:0}
+.timeline{display:grid;gap:16px}
+.event{border-left:3px solid var(--orange);padding:2px 0 2px 16px}
+.event b{color:var(--green);font-size:1.08rem}
+.books{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.book{min-height:270px;padding:24px;border-radius:18px;background:var(--green);color:white;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.book:nth-child(2){background:#b96842}.book:nth-child(3){background:#667b55}
+.book:after{content:"";position:absolute;width:180px;height:180px;border:1px solid rgba(255,255,255,.28);border-radius:50%;right:-55px;top:-45px}
+.book .year{font-weight:800;opacity:.8}
+.book h3{font-family:Georgia,serif;font-size:2rem;line-height:1.08;margin:25px 0;max-width:220px}
+.book small{opacity:.9}
+.poems{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.poem{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.poem button{width:100%;padding:20px 22px;border:0;background:none;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.poem button strong{font-family:Georgia,serif;font-size:1.25rem}
+.poem button span{font-size:1.4rem;color:var(--orange);transition:transform .2s}
+.poem .detail{display:none;padding:0 22px 20px;color:#52645a}
+.poem.open .detail{display:block}
+.poem.open button span{transform:rotate(45deg)}
+.note{font-size:.86rem;color:var(--muted);margin-top:16px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.gallery figure{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:12px}
+.gallery img{width:100%;height:230px;object-fit:cover;border-radius:12px}
+.gallery figcaption{padding:10px 4px 2px;font-size:.9rem;color:var(--muted)}
+.sources{background:#e9eddf;border-radius:20px;padding:28px}
+.sources a{color:var(--green);font-weight:700;overflow-wrap:anywhere}
+.sources li{margin:10px 0}
+footer{background:var(--ink);color:#e9eddf;padding:30px 22px;text-align:center}
+footer small{opacity:.8}
+.top{position:fixed;bottom:18px;right:18px;background:var(--orange);color:white;text-decoration:none;border-radius:50%;width:46px;height:46px;display:grid;place-items:center;font-size:1.2rem;box-shadow:0 6px 20px #0002}
+@media(max-width:760px){.hero{grid-template-columns:1fr;margin-top:18px}.hero-img img{height:330px}.bio-grid,.books,.gallery{grid-template-columns:1fr}.poems{grid-template-columns:1fr}.section-head{display:block}nav{gap:10px}nav a{font-size:.78rem}.hero-sticker{right:0}}
+</style>
+</head>
+<body>
+<header>
+ <div class="nav">
+  <div class="logo">PANTS & PIKSELIS</div>
+  <nav aria-label="Galvenā navigācija">
+   <a href="#biografija">Biogrāfija</a><a href="#darbi">Krājumi</a><a href="#dzeja">Dzeja</a><a href="#atteli">Attēli</a><a href="#avoti">Avoti</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+ <div class="hero" id="sakums">
+  <div>
+   <div class="eyebrow">Latviešu dzejnieks · 1933–2013</div>
+   <h1>Imants<br>Ziedonis</h1>
+   <p>Dzejnieks, kura darbos sastopas daba, cilvēka iekšējā pasaule, brīvība un vēlme ieraudzīt ikdienā kaut ko neparastu.</p>
+   <div class="meta">“Ceļš” kā viens no viņa daiļrades motīviem</div>
+  </div>
+  <div class="hero-img">
+   <img src="https://ziedonamuzejs.lv/media/pageimages/5d4d199cb9b85.jpg" alt="Imants Ziedonis pie koka mājas">
+   <div class="hero-sticker">Vārdi<br>ar jēgu</div>
+   <div class="photo-caption">Imants Ziedonis. Attēls no Imanta Ziedoņa muzeja vietnes.</div>
+  </div>
+ </div>
+
+ <section id="biografija">
+  <div class="section-head"><div><div class="kicker">01 · Dzīvesstāsts</div><h2>Biogrāfija</h2></div><p class="lead">No Ragaciema līdz vienai no nozīmīgākajām personībām latviešu literatūrā.</p></div>
+  <div class="bio-grid">
+   <article class="panel">
+    <p>Imants Ziedonis dzimis <b>1933. gada 3. maijā Ragaciemā</b>, zvejnieka ģimenē. Skolas gaitas viņš sāka Lapmežciemā, vēlāk mācījās Engurē, bet vidusskolu pabeidza Tukuma 1. vidusskolā. Pēc tam neklātienē studēja filoloģiju Latvijas Valsts universitātē un turpināja izglītību Augstākajos literārajos kursos Maskavā.</p>
+    <p>Studiju laikā Ziedonis strādāja dažādus darbus — bija ceļa strādnieks, skolotājs un bibliotekārs. Viņa pirmā dzejoļu grāmata <i>“Zemes un sapņu smilts”</i> iznāca 1961. gadā. Vēlāk viņš kļuva par profesionālu rakstnieku un radīja dzeju, epifānijas, pasakas, publicistiku un filmu scenārijus.</p>
+    <p>Ziedonis aktīvi piedalījās arī Latvijas kultūras dzīvē. Viņš vadīja Dižkoku atbrīvotāju grupu un bija Latvijas Kultūras fonda dibinātājs un pirmais priekšsēdētājs. Dzejnieks nomira <b>2013. gada 27. februārī Rīgā</b>.</p>
+   </article>
+   <aside class="panel">
+    <h3 style="margin-top:0">Svarīgākie dzīves notikumi</h3>
+    <div class="timeline">
+     <div class="event"><b>1933</b><br>Dzimis Ragaciemā.</div>
+     <div class="event"><b>1948–1952</b><br>Mācās Tukuma 1. vidusskolā.</div>
+     <div class="event"><b>1952–1959</b><br>Studē filoloģiju Latvijas Valsts universitātē.</div>
+     <div class="event"><b>1961</b><br>Iznāk pirmā dzejoļu grāmata “Zemes un sapņu smilts”.</div>
+     <div class="event"><b>1987–1993</b><br>Vada Latvijas Kultūras fondu.</div>
+     <div class="event"><b>2013</b><br>Mūžībā aiziet Rīgā.</div>
+    </div>
+   </aside>
+  </div>
+ </section>
+
+ <section id="darbi">
+  <div class="section-head"><div><div class="kicker">02 · Dzejas mantojums</div><h2>Trīs nozīmīgi krājumi</h2></div><p class="lead">Šie krājumi parāda dažādus autora daiļrades posmus un viņa interesi par cilvēka iekšējo pasauli.</p></div>
+  <div class="books">
+   <article class="book"><div class="year">1965</div><h3>Motocikls</h3><small>Dzejoļu krājums</small></article>
+   <article class="book"><div class="year">1968</div><h3>Es ieeju sevī</h3><small>Dzejoļu krājums</small></article>
+   <article class="book"><div class="year">1988</div><h3>Taureņu uzbrukums</h3><small>Dzejoļu krājums</small></article>
+  </div>
+  <p class="note">“Motocikls” saistīts ar izraušanos no ierastā un patstāvīga ceļa meklējumiem. “Es ieeju sevī” pievēršas pašizziņai un domāšanas paradumu pārskatīšanai. “Taureņu uzbrukumā” taurenis kļūst par dvēseles un garīguma meklējumu simbolu.</p>
+ </section>
+
+ <section id="dzeja">
+  <div class="section-head"><div><div class="kicker">03 · Dzejoļu piemēri</div><h2>Pieci dzejoļi</h2></div><p class="lead">Nospied uz dzejoļa nosaukuma, lai atvērtu īsu aprakstu.</p></div>
+  <div class="poems">
+   <article class="poem"><button type="button" aria-expanded="false"><strong>Mans siena vezums</strong><span>＋</span></button><div class="detail">Nosaukums vedina domāt par lauku vidi, darbu un cilvēka saikni ar zemi. Šo piemēru izvēlējos, jo tas ļauj pievērst uzmanību ikdienišķām lauku dzīves ainām un to nozīmei.</div></article>
+   <article class="poem"><button type="button" aria-expanded="false"><strong>Paskaties, kā vecis met tīklus</strong><span>＋</span></button><div class="detail">Dzejoļa nosaukumā redzama zvejnieka ikdienas darbība. Tas sasaucas ar autora izcelsmi zvejnieka ģimenē un piekrastes dzīves vidi. Izvēlējos to, jo tajā var saskatīt cilvēka un dabas attiecības.</div></article>
+   <article class="poem"><button type="button" aria-expanded="false"><strong>Tu lauku jaunais divu stāvu nams</strong><span>＋</span></button><div class="detail">Nosaukums pievērš uzmanību lauku mājai un pārmaiņām cilvēka dzīves telpā. Tas ļauj domāt par mājām, piederību un lauku ainavu. Šis piemērs papildina pārējos ar sadzīvisku skatījumu.</div></article>
+   <article class="poem"><button type="button" aria-expanded="false"><strong>Kad pilsētā melns esmu nokvēpis</strong><span>＋</span></button><div class="detail">Nosaukumā pretstatīta pilsētas vide un cilvēka sajūtas tajā. Tas rosina domāt par nogurumu, ikdienas steigu un vēlmi atgriezties pie vienkāršākām vērtībām. Izvēlējos šo dzejoli, jo tas piedāvā citu skatpunktu nekā lauku tēli.</div></article>
+   <article class="poem"><button type="button" aria-expanded="false"><strong>Es mīlu tavas acis</strong><span>＋</span></button><div class="detail">Nosaukums pievēršas tuvām un personiskām jūtām. Tas ļauj runāt par cilvēku attiecībām un uzmanību pret otru cilvēku. Izvēlējos šo piemēru, jo tas parāda liriskāku un emocionālāku noskaņu.</div></article>
+  </div>
+  <p class="note">Dzejoļu nosaukumi atlasīti pēc Latvijas Nacionālās bibliotēkas digitālajā katalogā norādītā Imanta Ziedoņa skaņuplates “Dzejoļi” satura. Apraksti ir īsas interpretācijas pēc nosaukumiem, nevis dzejoļu pilni teksti.</p>
+ </section>
+
+ <section id="atteli">
+  <div class="section-head"><div><div class="kicker">04 · Vizuālais materiāls</div><h2>Attēli un atmiņas</h2></div></div>
+  <div class="gallery">
+   <figure><img src="https://ziedonamuzejs.lv/media/pageimages/5d4d199cb9b85.jpg" alt="Imants Ziedonis pie vasarnīcas"><figcaption>Imants Ziedonis pie koka ēkas. Fotogrāfija no Imanta Ziedoņa muzeja vietnes.</figcaption></figure>
+   <figure><div style="height:230px;border-radius:12px;background:linear-gradient(145deg,#315d49,#9eaf7d);display:flex;align-items:center;justify-content:center;gap:14px;padding:20px;overflow:hidden"><div style="height:175px;width:112px;background:#e9d8b7;color:#315d49;padding:15px 10px;box-shadow:8px 8px 0 #1f3e31;display:flex;flex-direction:column;justify-content:space-between;text-align:center;font-family:Georgia,serif"><b>ES IE-EJU SEVĪ</b><small>IMANTS<br>ZIEDONIS</small><span>1968</span></div><div style="height:175px;width:112px;background:#e58a55;color:white;padding:15px 10px;box-shadow:8px 8px 0 #8a4c31;display:flex;flex-direction:column;justify-content:space-between;text-align:center;font-family:Georgia,serif"><b>TAUREŅU<br>UZBRUKUMS</b><small>IMANTS<br>ZIEDONIS</small><span>1988</span></div></div><figcaption>Divu nozīmīgu dzejas krājumu vizuāla interpretācija. Krājumi “Es ieeju sevī” un “Taureņu uzbrukums” ir iekļauti Latvijas Kultūras kanonā. <a href="https://kulturaskanons.lv/archive/imants-ziedonis/" target="_blank" rel="noopener">Skatīt Kultūras kanona ierakstu</a>.</figcaption></figure>
+  </div>
+  <p class="note">Piezīme: otrajā attēla vietā izmantota saite uz Kultūras kanona materiālu; ja video priekšskatījums pārlūkā nerādās, atver saiti.</p>
+ </section>
+
+ <section id="avoti">
+  <div class="section-head"><div><div class="kicker">05 · Pētniecība</div><h2>Izmantotie avoti</h2></div></div>
+  <div class="sources">
+   <ol>
+    <li><a href="https://ziedonamuzejs.lv/lv/imants_ziedonis" target="_blank" rel="noopener">Imanta Ziedoņa muzejs — Imants Ziedonis</a> (biogrāfija, izglītība, dzīves notikumi un fotogrāfija).</li>
+    <li><a href="https://enciklopedija.lv/skirklis/88033-Imants-Ziedonis" target="_blank" rel="noopener">Nacionālā enciklopēdija — Imants Ziedonis</a> (daiļrades raksturojums un nozīme).</li>
+    <li><a href="https://kulturaskanons.lv/archive/imants-ziedonis/" target="_blank" rel="noopener">Latvijas Kultūras kanons — Imants Ziedonis</a> (krājumu raksturojums).</li>
+    <li><a href="https://www.literatura.lv/personas/imants-ziedonis" target="_blank" rel="noopener">Literatura.lv — Imants Ziedonis</a> (dzejoļu krājumu bibliogrāfija).</li>
+    <li><a href="https://dom.lndb.lv/data/obj/1028753.html" target="_blank" rel="noopener">Latvijas Nacionālā bibliotēka — “Dzejoļi / Imants Ziedonis”</a> (skaņuplates satura saraksts).</li>
+   </ol>
+  </div>
+ </section>
+</main>
+<footer><b>Imants Ziedonis</b><br><small>“Pants un pikselis: dzejnieks digitālajā tīklā” · 9. klase</small></footer>
+<a class="top" href="#sakums" aria-label="Uz sākumu">↑</a>
+<script>
+document.querySelectorAll('.poem button').forEach(button=>{
+ button.addEventListener('click',()=>{
+  const card=button.closest('.poem');
+  card.classList.toggle('open');
+  button.setAttribute('aria-expanded',card.classList.contains('open')?'true':'false');
+ });
+});
+</script>
+</body>
+</html>
